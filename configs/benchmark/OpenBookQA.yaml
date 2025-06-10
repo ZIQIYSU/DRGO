@@ -1,0 +1,9 @@
+name: OpenBookQA
+
+dataset:
+  data_path: 'data/OpenBookQA/test.jsonl'
+
+retriever: 'model/BAAI/bge-large-en'
+vector_storage: 'data/vector_storage/sentence_embeddings.npy'
+corpus: 'data/corpus/openbook.txt'
+sample_size: 3

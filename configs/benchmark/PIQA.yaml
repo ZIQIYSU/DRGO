@@ -1,0 +1,9 @@
+name: PIQA
+
+dataset:
+  data_path: 'data/PIQA/500.jsonl'
+
+retriever: 'model/BAAI/bge-large-en'
+vector_storage: 'data/vector_storage/corpus_embeddings.npy'
+corpus: 'data/corpus/corpus.jsonl.gz'
+sample_size: 3

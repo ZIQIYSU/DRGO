@@ -1,0 +1,10 @@
+name: ARC_C
+
+
+dataset:
+  data_path: 'data/ARC/ARC-C/validation.jsonl'
+
+retriever: 'model/BAAI/bge-large-en'
+vector_storage: 'data/vector_storage/arc.npy'
+corpus: 'data/corpus/ARC_Corpus.txt'
+sample_size: 3

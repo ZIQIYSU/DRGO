@@ -1,0 +1,7 @@
+hydra-core
+torch
+transformers
+tqdm
+openai
+nltk
+scikit-learn

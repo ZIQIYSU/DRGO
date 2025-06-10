@@ -1,0 +1,12 @@
+name: DRGO
+
+retriever_path: 'model/BAAI/bge-large-en'
+save_path: 'results'
+hydra:  
+  output_subdir: null  
+  run:  
+    dir: .
+defaults:
+  - benchmark: OpenBookQA
+llm: 'llama3'
+threshold: 0.8
