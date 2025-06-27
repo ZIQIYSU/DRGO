@@ -115,7 +115,7 @@ sample_size: 3                                   # Number of generations per que
 
 ---
 
-## 🔧 How to Run a Different Benchmark
+##  How to Run a Different Benchmark
 
 1. Open `configs/DRGO.yaml`
 2. Change the `defaults` section to point to the desired benchmark file, e.g.:
