@@ -1,37 +1,37 @@
 # DRGO: Dynamic Retrieval and Generation Optimization Based on Fine-Grained Confidence Evaluation
 
-## 📚 Table of Contents
+##  Table of Contents
 
-- [🧠 Introduction](#-introduction)
-- [📌 Key Features](#-key-features)
-- [📂 Project Structure](#-project-structure)
-- [🚀 Installation](#-installation)
-- [🧪 DRGO Configuration Guide](#-drgo-configuration-guide)
-  - [📁 Main Configuration: `configs/DRGO.yaml`](#-main-configuration-configsdrgoyaml)
-  - [📁 Benchmark Configurations: `configs/benchmark/*.yaml`](#-benchmark-configurations-configsbenchmarkyaml)
-  - [🔧 How to Run a Different Benchmark](#-how-to-run-a-different-benchmark)
-  - [🛠️ Available Configuration Options](#️-available-configuration-options)
-- [📅 Input & Output](#-input--output)
-- [📊 Benchmarks](#-benchmarks)
-- [🔁 Reproducibility Notes](#-reproducibility-notes)
+- [ Introduction](#-introduction)
+- [ Key Features](#-key-features)
+- [ Project Structure](#-project-structure)
+- [ Installation](#-installation)
+- [ DRGO Configuration Guide](#-drgo-configuration-guide)
+  - [ Main Configuration: `configs/DRGO.yaml`](#-main-configuration-configsdrgoyaml)
+  - [ Benchmark Configurations: `configs/benchmark/*.yaml`](#-benchmark-configurations-configsbenchmarkyaml)
+  - [ How to Run a Different Benchmark](#-how-to-run-a-different-benchmark)
+  - [ Available Configuration Options](#️-available-configuration-options)
+- [ Input & Output](#-input--output)
+- [ Benchmarks](#-benchmarks)
+- [ Reproducibility Notes](#-reproducibility-notes)
 
 ![DRGO Overview](assets/drgo.png)
 
-## 🧠 Introduction
+##  Introduction
 
 **DRGO** (Dynamic Retrieval and Generation Optimization) is a novel method for optimizing retrieval-augmented generation (RAG) systems. It dynamically determines the necessity of retrieval based on **fine-grained (sentence-level) confidence estimation**, reducing unnecessary retrievals and improving efficiency and output reliability.
 
 This repository provides the full implementation of DRGO, along with scripts and configuration for evaluating its performance on multiple QA and fact-checking benchmarks.
 
-## 📌 Key Features
+##  Key Features
 
-* 🔍 **Dynamic Retrieval Decision**: DRGO uses multi-sample decoding to quantify sentence-level confidence, determining whether retrieval is required for each unit.
-* 🧹 **Sentence-Level Granularity**: Baseline answers are decomposed into atomic sentence units for precision control.
-* 📚 **Fact-Guided Retrieval**: Low-confidence sentences trigger a retrieval step that extracts factual cues to guide targeted search.
-* 📈 **Multi-Dataset Evaluation**: Evaluated on ARC, CommonsenseQA, PIQA, OpenBookQA, and FEVER.
-* ⚙️ **Modular and Extensible**: Built with Hydra and Hugging Face Transformers for easy configuration and extensibility.
+*  **Dynamic Retrieval Decision**: DRGO uses multi-sample decoding to quantify sentence-level confidence, determining whether retrieval is required for each unit.
+*  **Sentence-Level Granularity**: Baseline answers are decomposed into atomic sentence units for precision control.
+*  **Fact-Guided Retrieval**: Low-confidence sentences trigger a retrieval step that extracts factual cues to guide targeted search.
+*  **Multi-Dataset Evaluation**: Evaluated on ARC, CommonsenseQA, PIQA, OpenBookQA, and FEVER.
+*  **Modular and Extensible**: Built with Hydra and Hugging Face Transformers for easy configuration and extensibility.
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 DRGO/
@@ -51,7 +51,7 @@ DRGO/
 └── README.md
 ```
 
-## 🚀 Installation
+##  Installation
 
 Clone the repository and install dependencies:
 
@@ -63,13 +63,13 @@ cd DRGO
 pip install -r requirements.txt
 ```
 
-#  🧪 DRGO Configuration Guide
+#   DRGO Configuration Guide
 
 This guide explains how to configure and customize DRGO experiments by modifying the YAML files under the `configs/` directory. DRGO uses [Hydra](https://hydra.cc) for managing modular configurations.
 
 ---
 
-## 📁 Main Configuration: `configs/DRGO.yaml`
+##  Main Configuration: `configs/DRGO.yaml`
 
 This is the **main configuration file**. It sets the overall behavior of DRGO, such as which benchmark to run, the confidence threshold, and which base language model to use.
 
@@ -95,7 +95,7 @@ hydra:
 
 ---
 
-## 📁 Benchmark Configurations: `configs/benchmark/*.yaml`
+##  Benchmark Configurations: `configs/benchmark/*.yaml`
 
 Each benchmark (e.g., ARC, CommonsenseQA, FEVER) has its own YAML config file that defines dataset paths and retrieval resources.
 
@@ -135,7 +135,7 @@ python DRGO.py
 
 ---
 
-## 🛠️ Available Configuration Options
+##  Available Configuration Options
 
 | Field            | Location          | Description                                         |
 | ---------------- | ----------------- | --------------------------------------------------- |
@@ -149,7 +149,7 @@ python DRGO.py
 
 ---
 
-## 📌 Notes
+##  Notes
 
 * No command-line overrides are required. All configurations are loaded via Hydra YAML files.
 * Output results will be saved to the `save_path` directory.
@@ -159,7 +159,7 @@ python DRGO.py
 
 For further customization (e.g., new benchmarks or evaluation metrics), extend the configs or add new ones in `configs/benchmark/`.
 
-## 📅 Input & Output
+##  Input & Output
 
 * **Input**: QA datasets in JSON format, optionally with ground-truth answers.
 * **Output**:
@@ -169,7 +169,7 @@ For further customization (e.g., new benchmarks or evaluation metrics), extend t
   * Evaluation metrics (accuracy, precision, recall, etc.).
   * Logs and optional intermediate retrieval evidence.
 
-## 📊 Benchmarks
+##  Benchmarks
 
 DRGO is evaluated on the following datasets:
 
@@ -182,7 +182,7 @@ DRGO is evaluated on the following datasets:
 The results demonstrate that DRGO achieves a significant reduction in unnecessary retrievals while maintaining or improving final task accuracy.
 
 
-## 🔁 Reproducibility Notes
+##  Reproducibility Notes
 
 * All experimental settings are controlled via `configs/` using Hydra.
 * Random seeds and decoding parameters can be explicitly set via command line.
